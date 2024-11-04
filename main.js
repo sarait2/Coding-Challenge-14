@@ -17,10 +17,15 @@ async function fetchTickets() {
 
         // Show error if no tickets are found
         if (tickets.length === 0) {
-            throw new Error('No tickets found');
+            throw new Error('No unresolved tickets available');
         }
 
-        // Display ticket info
+        // TASK 3 - Display ticket info
+        const unresolvedTickets = [
+            // Sample tickets
+            { ticketId: 12, userId: 'user123', title: 'Login Issue', body: 'Unable to login.' },
+            { ticketId: 22, userId: 'user456', title: 'Unsuccessful Payment', body: 'Payment is failing with error code.' },
+        ];
         tickets.forEach(ticket => {
             const listItem = document.createElement('li');
             listItem.textContent = `Ticket ID: ${ticket.id}, Customer Name: User ${ticket.userId}, Issue Description: ${ticket.title}, Details: ${ticket.body}`;
@@ -33,9 +38,8 @@ async function fetchTickets() {
         errorMessage.textContent = `Error: ${error.message}`;
         document.body.appendChild(errorMessage);
     }
-}
-
-// Call the function to fetch and display tickets
+ finally {
+    // TASK 4 
+// Call the function to fetch and display ticket
 fetchTickets();
-
-
+ }
